@@ -8,9 +8,19 @@
     tools:context=".MainActivity"
     tools:ignore="HardcodedText">
 
-    <!--this is the filled layout box for the edit text-->
-    <!--this layout must be used to reposition or change
-        the height and width of the edit text-->
+    <Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="23sp"
+        android:text="My City ilovasidan ro'yxatdan o'tish"
+        />
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/filledTextField"
         android:layout_width="match_parent"
@@ -21,7 +31,6 @@
         android:hint="Ism-familiya"
         >
 
-        <!--this is the actual edit text which takes the input-->
         <com.google.android.material.textfield.TextInputEditText
             android:drawableStart="@drawable/person"
             android:id="@+id/edit_text"
@@ -39,32 +48,120 @@
         android:hint="Yoshingiz"
         >
 
-        <!--this is the actual edit text which takes the input-->
         <com.google.android.material.textfield.TextInputEditText
             android:drawableStart="@drawable/person"
             android:id="@+id/edit_text2"
+            android:inputType="number"
+            android:maxLength="2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/filledTextField3"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:hint="Kasbingiz"-->
+<!--        >-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:drawableStart="@drawable/person"-->
+<!--            android:id="@+id/edit_text3"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content" />-->
+
+
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filledTextField3"
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:hint="Kasbingiz"
-        >
-
-        <!--this is the actual edit text which takes the input-->
-        <com.google.android.material.textfield.TextInputEditText
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:hint="Kasbingiz">
+        <AutoCompleteTextView
             android:drawableStart="@drawable/person"
-            android:id="@+id/edit_text3"
+            android:id="@+id/kasb"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            />
     </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/spinner2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:hint="Viloyatingiz">
+        <AutoCompleteTextView
+            android:drawableStart="@drawable/person"
+            android:id="@+id/viloyat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/spinner3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:hint="Tumaningiz">
+        <AutoCompleteTextView
+            android:drawableStart="@drawable/person"
+            android:id="@+id/tuman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/spinner4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:hint="MFY/QFY">
+        <AutoCompleteTextView
+            android:drawableStart="@drawable/person"
+            android:id="@+id/mfy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/spinner5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:hint="Qaysi transport turidan foydalanasiz?">
+        <AutoCompleteTextView
+            android:drawableStart="@drawable/person"
+            android:id="@+id/auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/filledTextField4"
         android:layout_width="match_parent"
@@ -75,15 +172,32 @@
         android:hint="Telefon raqamingiz"
         >
 
-        <!--this is the actual edit text which takes the input-->
         <com.google.android.material.textfield.TextInputEditText
             android:drawableStart="@drawable/person"
-            android:id="@+id/edit_text4"
+            android:id="@+id/phone"
+            android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Parol yarating"
+        >
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:drawableStart="@drawable/person"
+            android:id="@+id/password"
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/submit_button"
         android:layout_width="match_parent"
@@ -91,16 +205,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:text="Submit" />
+        android:text="Ro'yxatdan o'tish" />
 
-    <!--text view which previews the entered data by user-->
-    <TextView
-        android:id="@+id/text_preview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="32dp"
-        android:text="You Entered : "
-        android:textSize="18sp" />
 
 </LinearLayout>

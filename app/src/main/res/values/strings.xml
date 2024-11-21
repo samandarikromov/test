@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MyCity</string>
+    <string-array name="spinner_options">
+        <item>Shifokor</item>
+        <item>O`qituvchi</item>
+        <item>Muhandis</item>
+        <item>Dasturchi</item>
+        <item>San`atchi</item>
+    </string-array>
 </resources>
