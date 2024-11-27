@@ -50,5 +50,4 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation("com.google.code.gson:gson:2.8.9")
     implementation ("com.airbnb.android:lottie:6.1.0")
-    implementation ("com.yandex.android:mapkit:3.5.0")
 }
