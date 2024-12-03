@@ -4,6 +4,7 @@ package com.example.mycity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -84,12 +85,18 @@ public class Home extends AppCompatActivity {
 
             return true;
         });
+
     }
     private  void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
+    }
+
+    public void onExitClicked(MenuItem item) {
+        Intent intent = new Intent(Home.this, Register.class);
+        startActivity(intent);
     }
 //    private void showBottomDialog() {
 //

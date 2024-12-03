@@ -22,7 +22,7 @@
             android:name=".Loader"
             android:exported="false" />
         <activity
-            android:name=".Home"
+            android:name=".Register"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,7 +38,7 @@
             android:name=".Login"
             android:exported="true" />
         <activity
-            android:name=".Register"
+            android:name=".Home"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
