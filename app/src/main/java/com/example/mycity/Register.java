@@ -1,10 +1,13 @@
 package com.example.mycity;
 
+import static androidx.fragment.app.FragmentManager.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,10 +16,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mycity.model.UserModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,17 +46,59 @@ public class Register extends AppCompatActivity {
     String[] transport = {"Taksi","Shaxsiy avtomobil","Avtobus","Mikroavtobus","Xizmat avtomobili","Velosiped","Odatda piyoda yuraman"};
     TextView backbtn,login;
 
+    Button registrBtn;
+    TextInputEditText ismFamilya;
+    TextInputEditText yosh;
+    TextInputEditText phone;
+    TextInputEditText password;
+    DatabaseReference databaseReference;
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "RestrictedApi"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
         AutoCompleteTextView kasb = findViewById(R.id.kasb);
         AutoCompleteTextView moshin = findViewById(R.id.auto);
         AutoCompleteTextView viloyatAutoComplete = findViewById(R.id.viloyat);
         AutoCompleteTextView tumanAutoComplete = findViewById(R.id.tuman);
+        AutoCompleteTextView mfy = findViewById(R.id.mfy);
         TextInputLayout tumanLayout = findViewById(R.id.spinner3);
+        registrBtn = findViewById(R.id.submit_button);
+        ismFamilya = findViewById(R.id.edit_text);
+        yosh = findViewById(R.id.edit_text2);
+        phone = findViewById(R.id.phone);
+        password = findViewById(R.id.password);
+
+        registrBtn.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signInAnonymously()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            // Foydalanuvchi yaratildi
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            // Ma'lumotlaringizni saqlang
+                            UserModel userModel = new UserModel(
+                                    user.getUid(),
+                                    ismFamilya.getText().toString().trim(),
+                                    Integer.parseInt(yosh.getText().toString().trim()),
+                                    kasb.getText().toString().trim(),
+                                    viloyatAutoComplete.getText().toString().trim(),
+                                    moshin.getText().toString().trim(),
+                                    phone.getText().toString().trim(),
+                                    password.getText().toString().trim()
+                            );
+                            databaseReference.child(user.getUid()).setValue(userModel);
+                            Toast.makeText(this, "Foydalanuvchi ro'yxatga olindi!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Xato yuz berdi
+                            Toast.makeText(this, "Ro'yxatdan o'tishda xato: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+        });
+
         backbtn = findViewById(R.id.nazad);
         backbtn.setOnClickListener(v -> {
             finish();

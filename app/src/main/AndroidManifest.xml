@@ -22,7 +22,7 @@
             android:name=".Loader"
             android:exported="true"/>
         <activity
-            android:name=".Home"
+            android:name=".Register"
             android:exported="true">
         </activity>
         <activity
@@ -33,7 +33,7 @@
             android:name=".Login"
             android:exported="true" />
         <activity
-            android:name=".Register"
+            android:name=".Home"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
